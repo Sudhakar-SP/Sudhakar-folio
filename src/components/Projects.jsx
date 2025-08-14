@@ -67,7 +67,7 @@ export default function Projects() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-8">
+      <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-8">
         My <span className="text-white">Projects</span>
       </h2>
 
@@ -87,7 +87,7 @@ export default function Projects() {
           {allProjects.map((project, idx) => (
             <div
               key={project.title + idx}
-              className="relative w-[280px] flex-shrink-0 bg-[#000000]/90 border-2 border-cyan-500/20 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.15)] backdrop-blur-sm group transition-all duration-300 hover:scale-105 hover:border-cyan-400"
+              className="relative w-[280px] flex-shrink-0 bg-[#000000]/90 border-2 border-green-500/20 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(34,197,94,0.15)] backdrop-blur-sm group transition-all duration-300 hover:scale-105 hover:border-green-400"
             >
               <div className="relative h-40 overflow-hidden">
                 <Image
@@ -104,7 +104,7 @@ export default function Projects() {
                 <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
                   {project.title}
                   <motion.span
-                    className="text-cyan-400"
+                    className="text-green-400"
                     animate={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
                   >
@@ -118,7 +118,7 @@ export default function Projects() {
                   {project.technologies.map((tech) => (
                     <div
                       key={tech}
-                      className="flex items-center gap-1 bg-cyan-950/30 px-2 py-0.5 rounded-full border border-cyan-500/20"
+                      className="flex items-center gap-1 bg-green-950/30 px-2 py-0.5 rounded-full border border-green-500/20"
                     >
                       <span className="text-base">
                         {technologies[tech].icon}
@@ -135,7 +135,7 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 bg-cyan-500 hover:bg-cyan-600 text-white px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-300"
+                      className="flex items-center gap-1.5 bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-300"
                       whileTap={{ scale: 0.95 }}
                     >
                       <FaExternalLinkAlt className="text-xs" />
@@ -164,7 +164,7 @@ export default function Projects() {
       </div>
 
       {/* Navigation hint */}
-      <div className="mt-6 flex gap-2 items-center text-cyan-400/60 text-sm font-medium">
+      <div className="mt-6 flex gap-2 items-center text-green-400/60 text-sm font-medium">
         <motion.span 
           animate={{ x: [-5, 0, -5] }} 
           transition={{ duration: 1.5, repeat: Infinity }}

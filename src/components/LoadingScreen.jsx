@@ -58,7 +58,7 @@ export default function LoadingScreen({ finishLoading }) {
         >
           <span className="text-white">SUDHAKAR's </span>
           <motion.span
-            className="text-cyan-400"
+            className="text-green-400"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
@@ -68,7 +68,7 @@ export default function LoadingScreen({ finishLoading }) {
 
         <div className="w-64 h-3 bg-gray-800 rounded-full mt-8 overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+            className="h-full bg-gradient-to-r from-green-400 to-green-600 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${counter}%` }}
             transition={{ duration: 0.05 }}
@@ -89,7 +89,7 @@ export default function LoadingScreen({ finishLoading }) {
           {iconPositions.map((pos, i) => (
             <motion.div
               key={i}
-              className="absolute text-cyan-400/30"
+              className="absolute text-green-400/30"
               initial={{
                 x: pos.x,
                 y: pos.y,

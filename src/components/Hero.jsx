@@ -37,10 +37,10 @@ const Typewriter = ({ roles }) => {
   }, [text, isDeleting, currentRole, roles]);
 
   return (
-    <span className="text-cyan-400 font-medium">
+    <span className="text-green-400 font-medium">
       {text}
       <motion.span
-        className="inline-block w-0.5 h-6 sm:h-7 bg-cyan-400 ml-1"
+        className="inline-block w-0.5 h-6 sm:h-7 bg-green-400 ml-1"
         animate={{ opacity: [0, 1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
       />
@@ -71,7 +71,7 @@ export default function Hero() {
           className="w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 flex-shrink-0"
         >
           <motion.div
-            className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-500/50 shadow-xl shadow-cyan-500/20 relative group"
+            className="w-full h-full rounded-full overflow-hidden border-4 border-green-500/50 shadow-xl shadow-green-500/20 relative group"
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -96,7 +96,7 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r to-green-500 from-green-400 bg-clip-text text-transparent">
               SUDHAKAR
             </span>
           </motion.h1>
@@ -115,14 +115,14 @@ export default function Hero() {
           <motion.a
             href="/Sudhakar_Resume.pdf"
             download="Sudhakar_Resume.pdf"
-            className="relative inline-flex items-center justify-center px-7 py-3 rounded-lg font-semibold text-white bg-transparent border-2 border-cyan-400 overflow-hidden group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-black"
+            className="relative inline-flex items-center justify-center px-7 py-3 rounded-lg font-semibold text-white bg-transparent border-2 border-green-400 overflow-hidden group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="absolute inset-0 bg-cyan-400/20 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out z-0"></span>
+            <span className="absolute inset-0 bg-green-400/20 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out z-0"></span>
             <span className="relative z-10">View My Resume</span>
           </motion.a>
         </div>

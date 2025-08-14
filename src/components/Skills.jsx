@@ -18,7 +18,6 @@ const technologies = [
   { name: 'React Native', icon: <FaReact /> },
   { name: 'MongoDB', icon: <SiMongodb /> },
   { name: 'Git', icon: <FaGitAlt /> },
-
 ]
 
 const skillVariants = {
@@ -40,14 +39,14 @@ const skillItemVariants = {
 const SkillCard = ({ name, icon }) => {
   return (
     <motion.div
-      className="flex flex-col items-center justify-center p-4 rounded-xl bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl border-2 border-cyan-500/10 hover:border-cyan-500/30 transition-all duration-300"
+      className="flex flex-col items-center justify-center p-4 rounded-xl bg-gradient-to-br from-black/60 to-black/40 backdrop-blur-xl border-2 border-green-500/10 hover:border-green-500/30 transition-all duration-300"
       whileHover={{ 
         scale: 1.05,
-        boxShadow: "0 0 25px rgba(6, 182, 212, 0.2)",
+        boxShadow: "0 0 25px rgba(34, 197, 94, 0.2)", // Tailwind green-500 glow
       }}
     >
       <motion.div
-        className="text-4xl text-cyan-400 mb-2"
+        className="text-4xl text-green-400 mb-2"
         whileHover={{ 
           rotate: [0, -10, 10, 0],
           transition: { duration: 0.5 }
@@ -89,7 +88,7 @@ export default function Skills() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.h2
-        className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-16"
+        className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-16"
         variants={skillItemVariants}
       >
         Tech <span className="text-white">Stack</span>

@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Subtle animated border */}
           <div className="absolute inset-0 rounded-xl p-[1px] overflow-hidden">
              <motion.div
-               className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/50 to-transparent"
                initial={{ x: "-100%" }}
                animate={{ x: "100%" }}
                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -68,13 +68,13 @@ export default function Navbar() {
           whileHover="hover"
         >
           <motion.span
-            className="text-3xl font-bold text-cyan-400 group-hover:text-white transition-colors duration-300"
+            className="text-3xl font-bold text-green-300 group-hover:text-white transition-colors duration-300"
             variants={linkVariants}
           >
             Sudhakar's
           </motion.span>
           <motion.span
-            className="text-xl font-light text-gray-300 group-hover:text-cyan-300 transition-colors duration-300 tracking-wider"
+            className="text-xl font-light text-gray-300 group-hover:text-green-300 transition-colors duration-300 tracking-wider"
             variants={linkVariants}
             transition={{ delay: 0.05 }}
           >
@@ -97,7 +97,7 @@ export default function Navbar() {
                 {link}
                 {/* Underline Hover Effect */}
                 <motion.span
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400"
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500"
                   initial={{ scaleX: 0 }}
                   variants={{ hover: { scaleX: 1 } }}
                   transition={{ duration: 0.3 }}

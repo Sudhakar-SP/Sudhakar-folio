@@ -8,7 +8,7 @@ const cards = [
     icon: <FaLaptopCode />,
     title: 'Master of Computer Applications',
     subtitle: 'PSNA College of Engineering and Technology , Dindigul',
-    details: '7.0% | 2024 - 2026',
+    details: '7.0 CGPA | 2024 - 2026',
   },
   {
     icon: <FaGraduationCap />,
@@ -20,7 +20,7 @@ const cards = [
     icon: <FaSchool />,
     title: 'Higher Secondary Education',
     subtitle: 'Loyola higher secondary school , Dindigul',
-    details: '7.2 GPA | 2019 - 2021',
+    details: '72% | 2019 - 2021',
   },
 ]
 
@@ -45,7 +45,7 @@ const cardVariants = {
   initial: { 
     scale: 1, 
     y: 0,
-    boxShadow: "0 4px 24px 0 rgba(6,182,212,0.10)",
+    boxShadow: "0 4px 24px 0 rgba(34,197,94,0.10)", // green-500
   },
   hover: {
     scale: 1.04,
@@ -63,10 +63,10 @@ const cardVariants = {
 }
 
 const iconVariants = {
-  initial: { scale: 1, filter: 'drop-shadow(0 0 0 #22d3ee)' },
+  initial: { scale: 1, filter: 'drop-shadow(0 0 0 #22c55e)' }, // green-500
   hover: { 
     scale: 1.19, 
-    filter: 'drop-shadow(0 0 12px #22d3ee)',
+    filter: 'drop-shadow(0 0 12px #22c55e)',
     transition: { duration: 0.38, ease: "easeInOut" }
   }
 }
@@ -82,7 +82,7 @@ export default function About() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.h2
-        className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-6"
+        className="text-4xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 mb-6"
         variants={itemVariants}
       >
         About <span className="text-white">Me</span>
@@ -99,10 +99,10 @@ export default function About() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-4xl"
         variants={itemVariants}
       >
-        {cards.map((card, idx) => (
+        {cards.map((card) => (
           <motion.div
             key={card.title}
-            className="relative group cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent px-7 py-8 flex flex-col items-center justify-center text-center transition-all duration-300 bg-gradient-to-br from-cyan-900/20 to-blue-900/10 backdrop-blur-xl"
+            className="relative group cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent px-7 py-8 flex flex-col items-center justify-center text-center transition-all duration-300 bg-gradient-to-br from-green-900/20 to-green-700/10 backdrop-blur-xl"
             variants={cardVariants}
             initial="initial"
             whileHover="hover"
@@ -110,10 +110,10 @@ export default function About() {
           >
             {/* Glowing border overlay */}
             <span
-              className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-2 border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-2 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                boxShadow: '0 0 24px 0 #22d3ee88, 0 0 0 4px #22d3ee22',
-                borderImage: 'linear-gradient(100deg, #06b6d4 0%, #3b82f6 100%) 1'
+                boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
+                borderImage: 'linear-gradient(100deg, #22c55e 0%, #15803d 100%) 1'
               }}
             />
             {/* Shimmer overlay */}
@@ -122,9 +122,9 @@ export default function About() {
             {/* Icon */}
             <motion.div
               variants={iconVariants}
-              className="relative z-20 flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-cyan-500/30 to-blue-500/20 shadow-lg group-hover:shadow-cyan-400/30 transition-all duration-300"
+              className="relative z-20 flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-green-500/30 to-green-700/20 shadow-lg group-hover:shadow-green-400/30 transition-all duration-300"
             >
-              <span className="text-cyan-300 text-3xl group-hover:text-cyan-100 transition-all duration-300">
+              <span className="text-green-300 text-3xl group-hover:text-green-100 transition-all duration-300">
                 {card.icon}
               </span>
             </motion.div>
@@ -135,7 +135,7 @@ export default function About() {
             <p className="text-sm text-gray-300 mb-1.5 relative z-20 font-medium">
               {card.subtitle}
             </p>
-            <p className="text-xs font-semibold text-cyan-400 relative z-20">
+            <p className="text-xs font-semibold text-green-400 relative z-20">
               {card.details}
             </p>
           </motion.div>
@@ -149,7 +149,7 @@ export default function About() {
           100% { background-position: 450px 0 }
         }
         .animate-shimmer {
-          background: linear-gradient(120deg, transparent 30%, rgba(6,182,212,0.22) 50%, transparent 70%);
+          background: linear-gradient(120deg, transparent 30%, rgba(34,197,94,0.22) 50%, transparent 70%);
           background-size: 900px 100%;
           animation: shimmer 2.2s linear infinite;
         }
