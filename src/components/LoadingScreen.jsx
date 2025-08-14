@@ -62,7 +62,7 @@ export default function LoadingScreen({ finishLoading }) {
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            folio
+            Portfolio
           </motion.span>
         </motion.div>
 

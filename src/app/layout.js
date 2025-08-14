@@ -12,6 +12,7 @@ import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import Achievements from '@/components/Achievements'
+import Footer from '@/components/Footer'
 
 export default function RootLayout({ children }) {
   const [showButton, setShowButton] = useState(false)
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
                 <Projects />
                 <Achievements />
               </main>
+              <Footer />
 
               <AnimatePresence>
                 {showButton && (
@@ -86,7 +88,7 @@ export default function RootLayout({ children }) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 bg-cyan-400 text-black p-3 rounded-full shadow-lg hover:bg-cyan-500 transition-all duration-300 focus:outline-none z-50"
+                    className="fixed bottom-8 right-8 bg-green-500 text-black p-3 rounded-full shadow-lg hover:bg-cyan-800 transition-all duration-300 focus:outline-none z-50"
                     aria-label="Scroll to top"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}

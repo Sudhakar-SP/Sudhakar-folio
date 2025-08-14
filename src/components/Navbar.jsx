@@ -78,7 +78,7 @@ export default function Navbar() {
             variants={linkVariants}
             transition={{ delay: 0.05 }}
           >
-            folio
+              Portfolio
           </motion.span>
         </motion.div>
 

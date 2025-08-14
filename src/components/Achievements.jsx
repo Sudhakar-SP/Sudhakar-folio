@@ -1,7 +1,10 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaUser, FaCommentDots, FaArrowDown } from 'react-icons/fa'
+import { 
+  FaEnvelope, FaUser, FaCommentDots, FaPhone, FaMapMarkerAlt, 
+  FaGithub, FaLinkedin, FaTwitter 
+} from 'react-icons/fa'
 
 const cardVariants = {
   initial: { opacity: 0, y: 40, scale: 0.96 },
@@ -13,7 +16,6 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [showDetails, setShowDetails] = useState(false) // Table toggle
 
   const formRef = useRef(null)
 
@@ -48,21 +50,6 @@ export default function Contact() {
     setLoading(false)
   }
 
-  // ArrowDown key toggles table
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        setShowDetails((prev) => !prev)
-        if (!showDetails) {
-          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showDetails])
-
   return (
     <motion.section
       id="contact"
@@ -72,7 +59,7 @@ export default function Contact() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <motion.h2
-        className="text-4xl sm:text-5xl font-extrabold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-white"
+        className="text-4xl sm:text-5xl font-extrabold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-white"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
       >
@@ -81,136 +68,167 @@ export default function Contact() {
         </span>
       </motion.h2>
 
-      {/* Toggle Button */}
-      <button
-        onClick={() => {
-          setShowDetails((prev) => !prev)
-          if (!showDetails) {
-            formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        }}
-        className="mb-6 flex items-center gap-2 text-green-400 hover:text-green-300 transition"
-      >
-        <FaArrowDown />
-        {showDetails ? 'Hide Contact Details' : 'Show Contact Details'}
-      </button>
-
-      {showDetails && (
-        <motion.table
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 w-full max-w-lg border border-green-400/40 text-white text-left"
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full max-w-6xl">
+        
+        {/* Left Side - Contact Form */}
+        <motion.div
+          className="relative w-full"
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
         >
-          <tbody>
-            <tr className="border-b border-green-400/40">
-              <td className="p-3 font-semibold">Email</td>
-              <td className="p-3">sudhakars2609@gmail.com</td>
-            </tr>
-            <tr className="border-b border-green-400/40">
-              <td className="p-3 font-semibold">Phone</td>
-              <td className="p-3">6383188865</td>
-            </tr>
-            <tr>
-              <td className="p-3 font-semibold">Location</td>
-              <td className="p-3">Dindigul , Tamilnadu</td>
-            </tr>
-          </tbody>
-        </motion.table>
-      )}
-
-      <motion.div
-        className="relative w-full max-w-xl mx-auto"
-        variants={cardVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
-        <div
-          className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group mx-auto"
-          style={{
-            background: 'linear-gradient(120deg, rgba(34,197,94,0.14) 0%, rgba(255,255,255,0.06) 100%)',
-            backdropFilter: 'blur(18px)',
-          }}
-        >
-          <span
-            className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-2 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-            style={{
-              boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
-              borderImage: 'linear-gradient(100deg, #22c55e 0%, #fff 100%) 1'
-            }}
-          />
-
           <div
-            ref={formRef}
-            className="relative z-20 p-7 flex flex-col items-center text-center bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+            className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group"
+            style={{
+              background: 'linear-gradient(120deg, rgba(34,197,94,0.14) 0%, rgba(255,255,255,0.06) 100%)',
+              backdropFilter: 'blur(18px)',
+            }}
           >
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="w-full space-y-5">
-                <div className="flex items-center bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
-                  <FaUser className="text-green-400 mr-3" />
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-transparent outline-none text-white w-full"
-                    required
-                  />
-                </div>
-                <div className="flex items-center bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
-                  <FaEnvelope className="text-green-400 mr-3" />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-transparent outline-none text-white w-full"
-                    required
-                  />
-                </div>
-                <div className="flex items-start bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
-                  <FaCommentDots className="text-green-400 mr-3 mt-1" />
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="4"
-                    className="bg-transparent outline-none text-white w-full resize-none"
-                    required
-                  ></textarea>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg hover:shadow-green-500/30 transition disabled:opacity-50"
+            <span
+              className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-2 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+              style={{
+                boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
+                borderImage: 'linear-gradient(100deg, #22c55e 0%, #fff 100%) 1'
+              }}
+            />
+
+            <div
+              ref={formRef}
+              className="relative z-20 p-7 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+            >
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="w-full space-y-5">
+                  <div className="flex items-center bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
+                    <FaUser className="text-green-400 mr-3" />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="bg-transparent outline-none text-white w-full"
+                      required
+                    />
+                  </div>
+                  <div className="flex items-center bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
+                    <FaEnvelope className="text-green-400 mr-3" />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="bg-transparent outline-none text-white w-full"
+                      required
+                    />
+                  </div>
+                  <div className="flex items-start bg-black/30 rounded-lg px-3 py-2 border border-green-400/30">
+                    <FaCommentDots className="text-green-400 mr-3 mt-1" />
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows="4"
+                      className="bg-transparent outline-none text-white w-full resize-none"
+                      required
+                    ></textarea>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg hover:shadow-green-500/30 transition disabled:opacity-50"
+                  >
+                    {loading ? 'Sending...' : 'Send Message'}
+                  </motion.button>
+                </form>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="p-6 rounded-lg border-2 border-green-400 text-center shadow-lg"
+                  style={{
+                    boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
+                    background: 'linear-gradient(120deg, rgba(34,197,94,0.14) 0%, rgba(255,255,255,0.06) 100%)',
+                  }}
                 >
-                  {loading ? 'Sending...' : 'Send Message'}
-                </motion.button>
-              </form>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="p-6 rounded-lg border-2 border-green-400 text-center shadow-lg"
-                style={{
-                  boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
-                  background: 'linear-gradient(120deg, rgba(34,197,94,0.14) 0%, rgba(255,255,255,0.06) 100%)',
-                }}
-              >
-                <h3 className="text-green-400 font-bold text-lg">✅ Message Sent Successfully!</h3>
-                <p className="text-gray-300 mt-2">Your message has been delivered. I’ll respond as soon as possible.</p>
-              </motion.div>
-            )}
+                  <h3 className="text-green-400 font-bold text-lg">✅ Message Sent Successfully!</h3>
+                  <p className="text-gray-300 mt-2">Your message has been delivered. I’ll respond as soon as possible.</p>
+                </motion.div>
+              )}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+
+        {/* Right Side - Contact Details */}
+        <motion.div
+          className="relative w-full"
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-transparent group"
+            style={{
+              background: 'linear-gradient(120deg, rgba(34,197,94,0.14) 0%, rgba(255,255,255,0.06) 100%)',
+              backdropFilter: 'blur(18px)',
+            }}
+          >
+            <span
+              className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-2 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+              style={{
+                boxShadow: '0 0 24px 0 #22c55e88, 0 0 0 4px #22c55e22',
+                borderImage: 'linear-gradient(100deg, #22c55e 0%, #fff 100%) 1'
+              }}
+            />
+
+            <div className="relative z-20 p-7 bg-gradient-to-t from-black/60 via-black/30 to-transparent">
+              <div className="space-y-6">
+                {/* Short Intro */}
+                <p className="text-gray-300">
+                  I’m Sudhakar S — passionate web developer from Tamil Nadu, India. 
+                  I create sleek, functional, and user-focused web applications.
+                </p>
+
+                {/* Contact Info */}
+                <div className="flex items-center space-x-4">
+                  <FaEnvelope className="text-green-400 text-xl" />
+                  <span className="text-white no-underline">sudhakars2609@gmail.com</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <FaPhone className="text-green-400 text-xl" />
+                  <span className="text-white no-underline">+91 63831 88865</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <FaMapMarkerAlt className="text-green-400 text-xl" />
+                  <span className="text-white no-underline">Dindigul, Tamil Nadu, India</span>
+                </div>
+
+                {/* Social Links */}
+                <div className="flex items-center space-x-5 pt-4">
+                  <a href="https://github.com/Sudhakar-SP" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition">
+                    <FaGithub size={22} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/suthakar-s-34a938330/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition">
+                    <FaLinkedin size={22} />
+                  </a>
+                </div>
+
+                {/* Availability */}
+                <p className="text-gray-200 text-sm pt-3">
+                  📅 Available for freelance projects and collaborations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </motion.section>
   )
 }
