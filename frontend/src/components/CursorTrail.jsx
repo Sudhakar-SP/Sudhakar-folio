@@ -26,7 +26,6 @@ export default function CursorTrail() {
         0 0 8px 3px rgba(0, 255, 255, 0.7),  // CHANGE THIS (e.g., 'rgba(255, 215, 0, 0.7)' for gold)
         0 0 12px 5px rgba(255, 0, 255, 0.5)   // CHANGE THIS (e.g., 'rgba(255, 165, 0, 0.5)' for orange)
       `
-      // Smooth transitions for position and opacity
       el.style.transition = `transform 0.1s linear, opacity 0.2s linear`
       // Adjust opacity falloff
       el.style.opacity = `${1 - i / (TRAIL_LENGTH + 5)}`
